@@ -1,0 +1,2 @@
+/usr/bin/ar qc libzmaplib.a  CMakeFiles/zmaplib.dir/blocklist.c.o CMakeFiles/zmaplib.dir/constraint.c.o CMakeFiles/zmaplib.dir/logger.c.o CMakeFiles/zmaplib.dir/pbm.c.o CMakeFiles/zmaplib.dir/random.c.o CMakeFiles/zmaplib.dir/rijndael-alg-fst.c.o CMakeFiles/zmaplib.dir/xalloc.c.o CMakeFiles/zmaplib.dir/lockfd.c.o CMakeFiles/zmaplib.dir/util.c.o CMakeFiles/zmaplib.dir/queue.c.o CMakeFiles/zmaplib.dir/csv.c.o
+/usr/bin/ranlib libzmaplib.a

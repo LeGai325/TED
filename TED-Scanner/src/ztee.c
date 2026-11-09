@@ -27,7 +27,7 @@
 #include "../lib/xalloc.h"
 #include "../lib/csv.h"
 
-#include "topt.h"
+#include <topt.h>
 
 typedef enum file_format { FORMAT_CSV, FORMAT_JSON, FORMAT_RAW } format_t;
 static const char *format_names[] = {"csv", "json", "raw"};

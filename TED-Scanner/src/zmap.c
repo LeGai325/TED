@@ -32,7 +32,7 @@
 #include "../lib/pbm.h"
 
 #include "aesrand.h"
-#include "zopt.h"
+#include <zopt.h>
 #include "send.h"
 #include "recv.h"
 #include "state.h"

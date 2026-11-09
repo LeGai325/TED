@@ -1,0 +1,49 @@
+name: TED-Scanner build
+
+on:
+  push:
+    branches:
+      - main
+      - fix/ted-scanner-build
+    paths:
+      - 'TED-Scanner/**'
+      - '.github/workflows/ted-scanner-build.yml'
+  pull_request:
+    paths:
+      - 'TED-Scanner/**'
+      - '.github/workflows/ted-scanner-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+
+      - name: Install build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            build-essential cmake libgmp-dev gengetopt libpcap-dev \
+            flex byacc libjson-c-dev pkg-config libunistring-dev
+
+      - name: Configure
+        run: >-
+          cmake -S TED-Scanner -B build
+          -DCMAKE_C_FLAGS="-Werror=implicit-function-declaration -Werror=incompatible-pointer-types"
+
+      - name: Build all targets
+        run: cmake --build build -j4
+
+      - name: Check command-line entry points
+        shell: bash
+        run: |
+          set -euo pipefail
+          for binary in zmap ztests zblocklist ziterate ztee; do
+            timeout 10s "./build/src/$binary" --help >/dev/null
+          done
+          timeout 10s ./build/src/zmap --list-probe-modules

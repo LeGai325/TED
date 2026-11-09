@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <assert.h>
+#include <time.h>
 
 #include "../../lib/includes.h"
 #include "../../lib/xalloc.h"
@@ -181,7 +182,7 @@ void make_icmp6_header(struct icmp6_hdr *buf,int type)
     // buf->icmp_seq = 0;
     // TODO: Set ICMP ECHO REQ specific fields
 }
-char *four_to_six(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr)
+void four_to_six(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr)
 {
 
 	uint8_t octet4 = (ipv4 >> 24) & 0xFF;
@@ -207,10 +208,9 @@ char *four_to_six(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr)
 		octate2_1, octate2_2, octate3_1, octate3_2, octate4_1,
 		octate4_2);
 	inet_pton(AF_INET6, ipv6_str, ipv6_addr);
-	return ipv6_str;
 }
 
-char *four_to_six2(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr){
+void four_to_six2(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr){
 	uint8_t octet4 = (ipv4 >> 24) & 0xFF;
 	uint8_t octet3 = (ipv4 >> 16) & 0xFF;
 	uint8_t octet2 = (ipv4 >> 8) & 0xFF;
@@ -234,7 +234,6 @@ char *four_to_six2(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr){
 		octate2_1, octate2_2, octate3_1, octate3_2, octate4_1,
 		octate4_2);
 	inet_pton(AF_INET6, ipv6_str, ipv6_addr);
-	return ipv6_str;
 }
 
 void make_icmp_header(struct icmp *buf)

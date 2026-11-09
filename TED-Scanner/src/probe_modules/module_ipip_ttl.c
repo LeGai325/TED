@@ -22,6 +22,7 @@
 #include <string.h>
 
 #include "../../lib/includes.h"
+#include "../../lib/logger.h"
 #include "probe_modules.h"
 #include "../fieldset.h"
 #include "packet.h"
@@ -144,7 +145,8 @@ static void ipip_ttl_process_packet(const u_char *packet,
 				    __attribute__((unused)) uint32_t len,
 				    fieldset_t *fs,
 				    __attribute__((unused))
-				    uint32_t *validation)
+				    uint32_t *validation,
+				    UNUSED const struct timespec ts)
 {
 	struct ip *ip_hdr = (struct ip *)&packet[sizeof(struct ether_header)];
 	struct icmp *icmp_hdr =

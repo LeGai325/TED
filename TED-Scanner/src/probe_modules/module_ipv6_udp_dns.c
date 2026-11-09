@@ -322,7 +322,8 @@ int ipv6_udp_dns_validate_packet(const struct ip *ip_hdr, uint32_t len,
 }
 
 void ipv6_udp_dns_process_packet(const u_char *packet, UNUSED uint32_t len, fieldset_t *fs,
-		__attribute__((unused)) uint32_t *validation) {
+		__attribute__((unused)) uint32_t *validation,
+		UNUSED const struct timespec ts) {
 	struct ip6_hdr *ipv6_hdr = (struct ip6_hdr *) &packet[sizeof(struct ether_header)];
 	if (ipv6_hdr->ip6_ctlun.ip6_un1.ip6_un1_nxt == IPPROTO_UDP) {
 		struct udphdr *udp_hdr = (struct udphdr *) (&ipv6_hdr[1]);

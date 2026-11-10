@@ -14,4 +14,5 @@
 #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 #endif
 
-#include "zopt.c"
+/* Use the parser generated in the build directory. */
+#include <zopt.c>

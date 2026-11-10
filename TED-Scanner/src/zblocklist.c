@@ -33,7 +33,7 @@
 #include "../lib/logger.h"
 #include "../lib/pbm.h"
 
-#include "zbopt.h"
+#include <zbopt.h>
 
 // struct zbl_stats {
 //	uint32_t cidr_entries;

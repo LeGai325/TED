@@ -30,7 +30,7 @@
 #include "iterator.h"
 #include "state.h"
 #include "validate.h"
-#include "zitopt.h"
+#include <zitopt.h>
 
 struct zit_conf {
 	char *blocklist_filename;

@@ -14,4 +14,4 @@
 #pragma GCC diagnostic ignored "-Wunused-but-set-variable"
 #endif
 
-#include "ztopt.c"
+#include <ztopt.c>

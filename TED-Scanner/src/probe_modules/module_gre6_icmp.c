@@ -197,7 +197,8 @@ static int gre6_icmp_validate_packet(const struct ip *ip_hdr, uint32_t len,
 static void gre6_icmp_process_packet(const u_char *packet,
 				__attribute__((unused)) uint32_t len,
 				fieldset_t *fs,
-				__attribute__((unused)) uint32_t *validation)
+				__attribute__((unused)) uint32_t *validation,
+				UNUSED const struct timespec ts)
 {
 	struct ip6_hdr *ip6_hdr =
 	    (struct ip6_hdr *)&packet[sizeof(struct ether_header)];

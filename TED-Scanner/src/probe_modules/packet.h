@@ -58,14 +58,17 @@
 
 typedef unsigned short __attribute__((__may_alias__)) alias_unsigned_short;
 
+struct guehdr;
+
 void make_eth_header(struct ether_header *ethh, macaddr_t *src, macaddr_t *dst);
 void make_eth_header_ethertype(struct ether_header *ethh, macaddr_t *src, macaddr_t *dst, uint16_t ether_type);
 
 void make_ip_header(struct ip *iph, uint8_t, uint16_t);
 void make_ip6_header(struct ip6_hdr *iph, uint8_t, uint16_t);
 void make_tcp_header(struct tcphdr *, port_h_t, uint16_t);
-char *four_to_six(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr);
-char *four_to_six2(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr);
+// Write the converted address into caller-owned storage.
+void four_to_six(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr);
+void four_to_six2(ipaddr_n_t ipv4, struct in6_addr *ipv6_addr);
 size_t set_mss_option(struct tcphdr *tcp_header);
 void make_icmp_header(struct icmp *);
 void make_gue_header(struct guehdr *, uint8_t , uint16_t );

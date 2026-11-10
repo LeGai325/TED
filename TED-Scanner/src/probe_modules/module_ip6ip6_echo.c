@@ -186,7 +186,8 @@ static void ip6ip6_echo_process_packet(const u_char *packet,
 				       __attribute__((unused)) uint32_t len,
 				       fieldset_t *fs,
 				       __attribute__((unused))
-				       uint32_t *validation)
+				       uint32_t *validation,
+				       UNUSED const struct timespec ts)
 {
 	struct ip6_hdr *ip6_hdr =
 	    (struct ip6_hdr *)&packet[sizeof(struct ether_header)];

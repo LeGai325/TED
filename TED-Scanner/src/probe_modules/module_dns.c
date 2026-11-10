@@ -647,12 +647,12 @@ static int dns_global_initialize(struct state_conf *conf)
 			qtype_str[probe_q_delimiter_p - arg_pos] = '\0';
 
 			qtypes[i] = qtype_str_to_code(qtype_str);
-			free(qtype_str);
 			if (!qtypes[i]) {
 				log_fatal("dns", "Incorrect qtype supplied. %s",
 					  qtype_str);
 				return EXIT_FAILURE;
 			}
+			free(qtype_str);
 
 			arg_pos = probe_q_delimiter_p + domain_len + 2;
 		}
